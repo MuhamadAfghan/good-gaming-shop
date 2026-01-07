@@ -5,7 +5,7 @@ import CartLine from "~/components/icons/CartLine.vue";
 </script>
 
 <template>
-  <div class="w-full bg-white font-sans sticky top-0 z-50">
+  <div class="w-full max-w-360 mx-auto bg-white font-sans sticky top-0 z-50">
     <!-- Top Promotion Banner -->
     <div class="py-2.5 px-12.5 text-center border-b border-gray-100 bg-white">
       <p

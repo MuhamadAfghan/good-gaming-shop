@@ -1,27 +1,27 @@
 <script setup lang="ts">
-import AppLogo from "~/components/AppLogo.vue";
+import AppLogo from '~/components/AppLogo.vue'
 
 const footerLinks = [
   {
-    title: "OUR SERVICE",
+    title: 'OUR SERVICE',
     links: [
-      { label: "About Us", to: "/about" },
-      { label: "Contact Us", to: "/contact" },
-      { label: "FAQ", to: "/faq" },
-      { label: "Return and Warranty", to: "/warranty" },
-    ],
+      { label: 'About Us', to: '/about' },
+      { label: 'Contact Us', to: '/contact' },
+      { label: 'FAQ', to: '/faq' },
+      { label: 'Return and Warranty', to: '/warranty' }
+    ]
   },
   {
-    title: "OTHER",
-    links: [{ label: "Keeb Corner", to: "/keeb-corner" }],
-  },
-];
+    title: 'OTHER',
+    links: [{ label: 'Keeb Corner', to: '/keeb-corner' }]
+  }
+]
 
 const socialLinks = [
-  { icon: "i-simple-icons-linkedin", to: "#" },
-  { icon: "i-simple-icons-tiktok", to: "#" },
-  { icon: "i-simple-icons-x", to: "#" },
-];
+  { icon: 'i-simple-icons-linkedin', to: '#' },
+  { icon: 'i-simple-icons-tiktok', to: '#' },
+  { icon: 'i-simple-icons-x', to: '#' }
+]
 </script>
 
 <template>
@@ -42,11 +42,16 @@ const socialLinks = [
             class="flex items-center gap-2 text-3xl font-bold italic mb-6 font-panton"
           >
             JAKARTA
-            <UIcon name="i-lucide-chevron-down" class="w-8 h-8" />
+            <UIcon
+              name="i-lucide-chevron-down"
+              class="w-8 h-8"
+            />
           </button>
 
           <div class="w-full max-w-xs">
-            <p class="text-sm mb-2 opacity-90">Shop Location</p>
+            <p class="text-sm mb-2 opacity-90">
+              Shop Location
+            </p>
             <div class="relative">
               <select
                 class="w-full appearance-none bg-[#E54545] border border-white/20 rounded-md py-3 px-4 pr-10 text-white focus:outline-none cursor-pointer"
@@ -83,7 +88,10 @@ const socialLinks = [
 
             <div class="space-y-4 text-sm text-gray-300">
               <div class="flex items-start gap-3">
-                <UIcon name="i-lucide-phone" class="w-5 h-5 shrink-0 mt-0.5" />
+                <UIcon
+                  name="i-lucide-phone"
+                  class="w-5 h-5 shrink-0 mt-0.5"
+                />
                 <span>(021) 62302218</span>
               </div>
               <div class="flex items-start gap-3">
@@ -99,16 +107,24 @@ const socialLinks = [
                 class="flex items-center gap-2 border border-white/30 rounded px-4 py-2 mt-4 hover:bg-white/10 transition"
               >
                 Open In Google Maps
-                <UIcon name="i-lucide-map-pin" class="w-4 h-4" />
+                <UIcon
+                  name="i-lucide-map-pin"
+                  class="w-4 h-4"
+                />
               </button>
             </div>
           </div>
 
           <div>
             <div class="space-y-4 text-sm text-gray-300">
-              <h4 class="text-white font-bold mb-2">Open Hours</h4>
+              <h4 class="text-white font-bold mb-2">
+                Open Hours
+              </h4>
               <div class="flex items-start gap-3">
-                <UIcon name="i-lucide-clock" class="w-5 h-5 shrink-0 mt-0.5" />
+                <UIcon
+                  name="i-lucide-clock"
+                  class="w-5 h-5 shrink-0 mt-0.5"
+                />
                 <span>Mon - Sat ( 11:00 am to 18:00 pm )</span>
               </div>
             </div>
@@ -130,7 +146,7 @@ const socialLinks = [
       <div class="flex-1 max-w-2xl">
         <h2 class="font-black text-[48px] italic mb-2 font-panton uppercase">
           LEVEL UP YOUR GEAR.
-          <br />
+          <br>
           <span class="text-[#DA291C]">GAME LIKE A PRO.</span>
         </h2>
 
@@ -158,12 +174,18 @@ const socialLinks = [
 
       <!-- Right Links -->
       <div class="flex gap-16 lg:gap-32 font-manrope">
-        <div v-for="section in footerLinks" :key="section.title">
+        <div
+          v-for="section in footerLinks"
+          :key="section.title"
+        >
           <h3 class="font-black italic text-lg mb-6 font-panton uppercase">
             {{ section.title }}
           </h3>
           <ul class="space-y-4">
-            <li v-for="link in section.links" :key="link.label">
+            <li
+              v-for="link in section.links"
+              :key="link.label"
+            >
               <NuxtLink
                 :to="link.to"
                 class="text-[#1A1A1A] hover:text-[#DA291C] transition-colors font-medium"
