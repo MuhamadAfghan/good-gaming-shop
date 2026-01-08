@@ -1,5 +1,4 @@
 export default defineNuxtConfig({
-
   modules: ['@nuxt/eslint', '@nuxt/ui', '@pinia/nuxt'],
   devtools: {
     enabled: true
@@ -29,9 +28,19 @@ export default defineNuxtConfig({
   eslint: {
     config: {
       stylistic: {
-        commaDangle: 'never',
-        braceStyle: '1tbs'
+        quotes: 'single',
+        commaDangle: 'never'
       }
     }
+  },
+
+  fonts: {
+    families: [
+      {
+        name: 'Manrope',
+        provider: 'google',
+        weights: [400, 500, 600, 700, 800]
+      }
+    ]
   }
 })

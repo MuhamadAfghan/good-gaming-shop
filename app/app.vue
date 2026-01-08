@@ -27,12 +27,16 @@ colorMode.preference = 'light'
 
 <template>
   <UApp>
-    <LayoutNavbar />
+    <div class="min-h-screen flex justify-center font-manrope">
+      <div class="w-full bg-white min-h-screen flex flex-col">
+        <LayoutNavbar />
 
-    <UMain>
-      <NuxtPage />
-    </UMain>
+        <UMain class="flex-grow">
+          <NuxtPage />
+        </UMain>
 
-    <LayoutFooter />
+        <LayoutFooter />
+      </div>
+    </div>
   </UApp>
 </template>

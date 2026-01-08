@@ -27,16 +27,11 @@ const socialLinks = [
 <template>
   <footer class="w-full text-[16px]">
     <!-- Top Section (Red & Black) -->
-    <div class="flex flex-col lg:flex-row w-full font-manrope">
+    <div class="flex flex-col lg:flex-row w-full font-manrope bg-black">
       <!-- Red Section -->
       <div
-        class="relative w-full lg:w-[45%] bg-[#DA291C] text-white py-12 px-8 lg:px-16 overflow-hidden"
+        class="relative w-full lg:w-[45%] bg-[#E21F32] text-white py-12 px-8 lg:px-16 overflow-hidden clip-diagonal lg:pr-32 z-10"
       >
-        <!-- Slanted Background Effect -->
-        <div
-          class="absolute top-0 right-0 h-full w-full bg-[#DA291C] transform skew-x-12 origin-top-left lg:block hidden z-0 translate-x-[50px]"
-        />
-
         <div class="relative z-10 w-full max-w-md">
           <button
             class="flex items-center gap-2 text-3xl font-bold italic mb-6 font-panton"
@@ -65,16 +60,10 @@ const socialLinks = [
             </div>
           </div>
         </div>
-
-        <!-- Diagonal Cut using Clip Path for cleaner edge if needed, but flex basis + color works -->
       </div>
 
-      <!-- Skewed separator fix: actually the image shows a sharp angle.
-           Let's try a parent flex with background gradient or a absolute positioned skewed div.
-      -->
-
       <!-- Black Section -->
-      <div class="flex-1 bg-black text-white py-12 px-8 lg:px-16 relative z-0">
+      <div class="flex-1 text-white py-12 px-8 lg:px-16 relative z-0">
         <!-- We need the red shape to overlap the black one on the left. -->
         <!-- Re-implementing structure for the diagonal layout -->
 
@@ -140,24 +129,27 @@ const socialLinks = [
 
     <!-- Main Footer Content -->
     <div
-      class="container mx-auto px-4 py-16 flex flex-col lg:flex-row gap-12 lg:gap-24"
+      class="container mx-auto px-8 lg:px-16 py-16 flex flex-col lg:flex-row gap-12 lg:gap-24"
     >
       <!-- Left Branding -->
       <div class="flex-1 max-w-2xl">
         <h2 class="font-black text-[48px] italic mb-2 font-panton uppercase">
           LEVEL UP YOUR GEAR.
-          <br>
-          <span class="text-[#DA291C]">GAME LIKE A PRO.</span>
+        </h2>
+        <h2
+          class="text-[#DA291C] -mt-7 font-black text-[48px] italic mb-2 font-panton uppercase"
+        >
+          GAME LIKE A PRO.
         </h2>
 
-        <div class="flex gap-4 mb-12">
+        <div class="flex gap-4 my-12">
           <UButton
             v-for="social in socialLinks"
             :key="social.icon"
             :icon="social.icon"
             color="gray"
             variant="ghost"
-            class="rounded-full bg-gray-100 hover:bg-gray-200 w-12 h-12 flex items-center justify-center text-black"
+            class="rounded-full bg-gray-100 hover:bg-gray-200 w-16 h-16 flex items-center justify-center text-black"
             :ui="{ rounded: 'rounded-full' }"
           />
         </div>

@@ -1,35 +1,38 @@
 <script setup lang="ts">
-import heroImage from "~/assets/images/hero-1.png";
+import heroImage from '~/assets/images/hero-1.png'
 
-const items = [heroImage, heroImage, heroImage, heroImage];
+const items = [heroImage, heroImage, heroImage, heroImage]
 
-const carousel = useTemplateRef("carousel");
-const activeIndex = ref(0);
+const carousel = useTemplateRef('carousel')
+const activeIndex = ref(0)
 
 function onSelect(index: number) {
-  activeIndex.value = index;
+  activeIndex.value = index
 }
 
 function select(index: number) {
-  activeIndex.value = index;
-
-  carousel.value?.emblaApi?.scrollTo(index);
+  activeIndex.value = index
+  carousel.value?.emblaApi?.scrollTo(index)
 }
 </script>
 
 <template>
-  <div class="relative w-full container mx-auto px-12.5 py-6">
+  <div class="relative w-full">
     <UCarousel
-      ref="carouselRef"
+      ref="carousel"
       v-slot="{ item }"
       loop
       :autoplay="{ delay: 3000 }"
       :items="items"
       :ui="{ item: 'basis-full' }"
-      class="rounded-lg overflow-hidden"
+      class="overflow-hidden"
       @select="onSelect"
     >
-      <img :src="item" class="w-full h-auto object-cover" draggable="false" />
+      <img
+        :src="item"
+        class="h-screen object-cover"
+        draggable="false"
+      >
     </UCarousel>
 
     <!-- Custom Indicators -->
@@ -41,7 +44,7 @@ function select(index: number) {
         :class="[
           activeIndex === index
             ? 'w-12 bg-[#E21F32]'
-            : 'w-2.5 bg-[#E5E5E5] hover:bg-gray-300',
+            : 'w-2.5 bg-[#E5E5E5] hover:bg-gray-300'
         ]"
         @click="select(index)"
       />
