@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import drop1 from '~/assets/images/products/new-drop-1.png'
-import drop2 from '~/assets/images/products/new-drop-2.png'
-import drop3 from '~/assets/images/products/new-drop-3.png'
-import drop4 from '~/assets/images/products/new-drop-4.png'
+import drop1 from "~/assets/images/products/new-drop-1.png";
+import drop2 from "~/assets/images/products/new-drop-2.png";
+import drop3 from "~/assets/images/products/new-drop-3.png";
+import drop4 from "~/assets/images/products/new-drop-4.png";
 
 const products = [
-  { image: drop1, title: 'AKAI ŌKAMI' },
-  { image: drop2, title: 'TIAMAT EDITION' },
-  { image: drop3, title: 'SPECTRUM CORE' },
-  { image: drop4, title: 'BLAZEHOWL XL' }
-]
+  { image: drop1, title: "AKAI ŌKAMI" },
+  { image: drop2, title: "TIAMAT EDITION" },
+  { image: drop3, title: "SPECTRUM CORE" },
+  { image: drop4, title: "BLAZEHOWL XL" },
+];
 </script>
 
 <template>
@@ -50,7 +50,7 @@ const products = [
             :src="product.image"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             draggable="false"
-          >
+          />
 
           <!-- Gradient Overlay -->
           <div
