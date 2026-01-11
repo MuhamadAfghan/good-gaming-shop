@@ -1,40 +1,67 @@
 <script setup lang="ts">
-import { onMounted } from "vue";
+import { onMounted, onUnmounted, ref, watch } from "vue";
 import tiktokLogo from "~/assets/images/logos/tiktok.png";
 
 const { tikTokEmbeds, pending } = useTikTokEmbeds();
+const containerRef = ref<HTMLElement | null>(null);
+const observer = ref<IntersectionObserver | null>(null);
 
 const loadTikTokScript = () => {
-    // Check if script already exists to avoid duplication
     if (!document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
       const script = document.createElement("script");
       script.src = "https://www.tiktok.com/embed.js";
       script.async = true;
       document.body.appendChild(script);
-    } else {
-        // If script exists, we might need to trigger a reload or re-process embeds
-        // TikTok embed.js usually processes on load. If content is added dynamically,
-        // we might not encounter issues if the script is loaded *after* or if we assume global window object handling.
-        // However, standard embed usually works if script is present.
-        // Sometimes reloading the script path with a query param helps force re-execution if needed,
-        // but let's stick to standard first.
-        // Actually, TikTok's embed script usually runs once.
-        // Safe bet: ensure the script is present.
     }
 };
 
 onMounted(() => {
-  loadTikTokScript();
+  // Create intersection observer
+  observer.value = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        // Use requestIdleCallback to defer execution until browser is idle
+        if ('requestIdleCallback' in window) {
+           (window as any).requestIdleCallback(() => {
+              loadTikTokScript();
+           });
+        } else {
+           // Fallback for browsers that don't support requestIdleCallback
+           setTimeout(loadTikTokScript, 200);
+        }
+        
+        // Disconnect after loading
+        if (observer.value) observer.value.disconnect();
+      }
+    });
+  }, {
+    rootMargin: '100px' // Load slightly before it comes into view
+  });
+
+  if (containerRef.value) {
+    observer.value.observe(containerRef.value);
+  }
 });
 
-// Watch for data changes to ensure script re-runs if needed (though usually script handles existing DOM)
+onUnmounted(() => {
+  if (observer.value) observer.value.disconnect();
+});
+
 watch(tikTokEmbeds, () => {
-    setTimeout(loadTikTokScript, 100);
+    // If we have new embeds and the script is already loaded, we might need to reload it?
+    // Usually TikTok's embed.js handles DOM mutations if observed, but standard embed flow is just script injection.
+    // If the observer has already triggered, try reloading layout if needed, but standard script usually runs once.
+    // If not triggered yet, observer handles it.
+     if (document.querySelector('script[src="https://www.tiktok.com/embed.js"]')) {
+          // Force re-scan if needed by removing/re-adding or similar, but simplified:
+          // Just ensure script is present.
+          loadTikTokScript();
+     }
 });
 </script>
 
 <template>
-  <div class="relative w-full py-20 overflow-hidden font-manrope bg-[#32080C]">
+  <div ref="containerRef" class="relative w-full py-20 overflow-hidden font-manrope bg-[#32080C]">
     <div class="container mx-auto">
       <!-- Slanted Red Background -->
       <div

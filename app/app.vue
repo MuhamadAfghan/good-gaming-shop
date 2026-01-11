@@ -1,7 +1,11 @@
 <script setup>
 useHead({
   meta: [{ name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-  link: [{ rel: 'icon', href: '/favicon.ico' }],
+  link: [
+    { rel: 'icon', href: '/favicon.ico' },
+    { rel: 'preconnect', href: 'https://sf16-website-login.neutral.ttwstatic.com', crossorigin: '' },
+    { rel: 'preconnect', href: 'https://ttwstatic.com', crossorigin: '' }
+  ],
   htmlAttrs: {
     lang: 'en'
   }

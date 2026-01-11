@@ -19,7 +19,7 @@ function next() {
   <div class="border-b border-gray-100 container mx-auto">
     <div class="px-12.5 mb-6 flex justify-between items-end">
       <!-- Title -->
-      <div>
+      <div class="min-h-[120px] flex flex-col justify-end">
         <h2
           class="text-[48px] font-black italic font-panton uppercase text-[#1A1A1A] leading-tight"
         >
@@ -67,13 +67,18 @@ function next() {
           <template #default="{ item }">
             <NuxtImg
               :src="item.image"
-              class="w-full h-auto object-cover rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
+              class="w-full h-auto object-cover rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300 aspect-[3/4]"
               draggable="false"
               loading="lazy"
               format="webp"
             />
           </template>
         </UCarousel>
+        <template #fallback>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                 <div v-for="i in 4" :key="i" class="w-full h-auto aspect-[16/9] rounded-2xl bg-gray-100"></div>
+            </div>
+        </template>
       </ClientOnly>
     </div>
   </div>

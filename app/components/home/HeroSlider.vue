@@ -35,14 +35,27 @@ function select(index: number) {
         class="overflow-hidden"
         @select="onSelect"
       >
-      <NuxtImg
+        <NuxtImg
           :src="item.image"
           class="h-173.25 object-cover w-full"
           draggable="false"
           format="webp"
-          placeholder 
+          loading="eager"
+          fetchpriority="high"
         />
       </UCarousel>
+      <template #fallback>
+        <div v-if="!pending && items.length > 0" class="overflow-hidden">
+             <NuxtImg
+              :src="items[0].image"
+              class="h-173.25 object-cover w-full"
+              draggable="false"
+              format="webp"
+              loading="eager"
+              fetchpriority="high"
+            />
+        </div>
+      </template>
     </ClientOnly>
 
     <!-- Custom Indicators -->

@@ -33,7 +33,7 @@ const items = computed(() => {
     class="w-full bg-[#3E0A0F] py-16 text-white font-manrope select-none mb-0"
   >
     <div class="container mx-auto px-12.5">
-      <div class="mb-10">
+      <div class="mb-10 min-h-[100px] flex flex-col justify-end">
         <h2
           class="text-[48px] font-black italic font-panton uppercase leading-none"
         >
@@ -51,7 +51,7 @@ const items = computed(() => {
         <CommonSkeletonImage v-for="i in 4" :key="i" class="w-1/4 h-96 rounded-xl shrink-0" />
       </div>
 
-      <ClientOnly>
+      <ClientOnly> 
         <CommonCarousel v-if="!pending && items.length > 0">
           <div
             v-for="(item, index) in items"
@@ -137,6 +137,11 @@ const items = computed(() => {
             </div>
           </div>
         </CommonCarousel>
+        <template #fallback>
+             <div class="flex gap-4 overflow-hidden">
+                <div v-for="i in 4" :key="i" class="min-w-[85%] md:min-w-[calc(50%-10px)] lg:min-w-[calc(25%-15px)] h-96 bg-white/10 rounded-xl"></div>
+             </div>
+        </template>
       </ClientOnly>
     </div>
   </div>

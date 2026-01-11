@@ -1,8 +1,9 @@
-<script setup lang="ts">
-import AppLogo from "~/components/AppLogo.vue";
+<script setup>
+  import AppLogo from "~/components/AppLogo.vue";
 import NotificationLine from "~/components/icons/NotificationLine.vue";
 import CartLine from "~/components/icons/CartLine.vue";
 import Divider from "~/components/atoms/Divider.vue";
+import userAvatar from "~/assets/images/user-avatar.png";
 </script>
 
 <template>
@@ -99,7 +100,7 @@ import Divider from "~/components/atoms/Divider.vue";
               <!-- User Profile -->
               <div class="flex items-center gap-3 cursor-pointer pl-1">
                 <UAvatar
-                  src="https://github.com/nutlope.png"
+                  :src="userAvatar"
                   alt="Anggana Putra"
                   size="md"
                   class="bg-[#FCD34D] text-[#854D0E]"
