@@ -42,6 +42,7 @@ function select(index: number) {
           format="webp"
           loading="eager"
           fetchpriority="high"
+          :alt="item.title"
         />
       </UCarousel>
       <template #fallback>
@@ -53,6 +54,7 @@ function select(index: number) {
               format="webp"
               loading="eager"
               fetchpriority="high"
+              :alt="items[0].title"
             />
         </div>
       </template>
@@ -64,6 +66,7 @@ function select(index: number) {
         v-for="(_, index) in items"
         :key="index"
         class="h-2.5 rounded-full transition-all duration-300"
+        name="indicator"
         :class="[
           activeIndex === index
             ? 'w-12 bg-[#E21F32]'

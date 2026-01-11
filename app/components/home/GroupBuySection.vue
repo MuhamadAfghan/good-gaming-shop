@@ -73,6 +73,7 @@ const items = computed(() => {
                   draggable="false"
                   loading="lazy"
                   format="webp"
+                  :alt="item.title"
                 />
 
                 <div class="absolute bottom-4 left-4 right-4 z-10">

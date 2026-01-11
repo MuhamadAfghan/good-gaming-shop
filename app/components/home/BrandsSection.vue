@@ -75,6 +75,7 @@ const brands = computed(() => {
           <NuxtImg :src="brand.bg"
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                draggable="false"
+               :alt="brand.name"
                loading="lazy"
                format="webp"/>
 

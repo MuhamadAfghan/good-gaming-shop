@@ -26,6 +26,7 @@ defineProps<{
         draggable="false"
         loading="lazy"
         format="webp"
+        alt="Product Image"
       />
     </div>
 

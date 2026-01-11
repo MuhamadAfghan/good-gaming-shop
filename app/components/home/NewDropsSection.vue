@@ -65,6 +65,7 @@ const products = computed(() => {
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               draggable="false"
               loading="lazy"
+              :alt="product.title"
               format="webp"
             />
 

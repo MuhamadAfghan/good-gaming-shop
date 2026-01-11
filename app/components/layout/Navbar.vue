@@ -80,12 +80,12 @@ import userAvatar from "~/assets/images/user-avatar.png";
             <!-- Right Actions -->
             <div class="flex items-center gap-5">
               <!-- Notification -->
-              <button class="relative text-[#1A1A1A] hover:text-gray-700 p-1">
+              <button class="relative text-[#1A1A1A] hover:text-gray-700 p-1" name="notification">
                 <NotificationLine />
               </button>
 
               <!-- Cart -->
-              <button class="relative text-[#1A1A1A] hover:text-gray-700 p-1">
+              <button class="relative text-[#1A1A1A] hover:text-gray-700 p-1" name="cart">
                 <CartLine />
                 <span
                   class="absolute -top-0.5 -right-1 flex h-[18px] w-[18px] items-center justify-center rounded-full bg-[#E21F32] text-[10px] text-white font-bold border-2 border-white leading-none"

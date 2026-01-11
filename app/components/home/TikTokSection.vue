@@ -75,6 +75,7 @@ watch(tikTokEmbeds, () => {
             :src="tiktokLogo"
             alt="TikTok"
             class="h-12 w-auto brightness-0 invert"
+            
           />
         </div>
 
@@ -86,7 +87,7 @@ watch(tikTokEmbeds, () => {
         <!-- Grid -->
         <div v-if="!pending" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
-            v-for="(embed, index) in tikTokEmbeds"
+            v-for="(embed, index) in tikTokEmbeds.slice(0, 4)"
             :key="index"
             class="overflow-hidden rounded-xl bg-black flex justify-center items-center"
           >

@@ -48,7 +48,9 @@ const socialLinks = [
               Shop Location
             </p>
             <div class="relative">
+              <label for="location sr-only">Location</label>
               <select
+                id="location"
                 class="w-full appearance-none bg-[#E54545] border border-white/20 rounded-md py-3 px-4 pr-10 text-white focus:outline-none cursor-pointer"
               >
                 <option>Jakarta Pusat</option>

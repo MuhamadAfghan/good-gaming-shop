@@ -35,12 +35,14 @@ function next() {
       <!-- Navigation -->
       <div v-if="!pending && items.length > 0" class="flex gap-3">
         <button
+        name="prev"
           class="w-10 h-10 rounded-full bg-[#DA291C] flex items-center justify-center text-white hover:bg-[#b01b12] transition-colors shadow-sm"
           @click="prev"
         >
           <UIcon name="i-lucide-chevron-left" class="w-5 h-5" />
         </button>
         <button
+        name="next"
           class="w-10 h-10 rounded-full bg-[#DA291C] flex items-center justify-center text-white hover:bg-[#b01b12] transition-colors shadow-sm"
           @click="next"
         >
@@ -71,6 +73,7 @@ function next() {
               draggable="false"
               loading="lazy"
               format="webp"
+              :alt="item.title"
             />
           </template>
         </UCarousel>
