@@ -35,11 +35,13 @@ function select(index: number) {
         class="overflow-hidden"
         @select="onSelect"
       >
-        <img
+      <NuxtImg
           :src="item.image"
           class="h-173.25 object-cover w-full"
           draggable="false"
-        >
+          format="webp"
+          loading="eager"
+        />
       </UCarousel>
     </ClientOnly>
 

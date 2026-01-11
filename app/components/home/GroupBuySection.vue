@@ -67,10 +67,12 @@ const items = computed(() => {
                     >{{ item.brand }}</span
                   >
                 </div>
-                <img
+                <NuxtImg
                   :src="item.image"
                   class="w-full h-auto object-contain mix-blend-multiply aspect-square"
                   draggable="false"
+                  loading="lazy"
+                  format="webp"
                 />
 
                 <div class="absolute bottom-4 left-4 right-4 z-10">

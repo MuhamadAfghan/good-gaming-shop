@@ -60,10 +60,12 @@ const products = computed(() => {
             class="relative group rounded-2xl overflow-hidden aspect-[3/4] cursor-pointer"
           >
             <!-- Image -->
-            <img
+            <NuxtImg
               :src="product.image"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
               draggable="false"
+              loading="lazy"
+              format="webp"
             />
 
             <!-- Gradient Overlay -->

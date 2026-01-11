@@ -65,10 +65,12 @@ function next() {
           class="w-full"
         >
           <template #default="{ item }">
-            <img
+            <NuxtImg
               :src="item.image"
               class="w-full h-auto object-cover rounded-2xl shadow-sm hover:shadow-md transition-shadow duration-300"
               draggable="false"
+              loading="lazy"
+              format="webp"
             />
           </template>
         </UCarousel>

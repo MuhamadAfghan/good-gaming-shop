@@ -20,10 +20,12 @@ defineProps<{
         >
       </div>
 
-      <img
+      <NuxtImg
         :src="image"
         class="w-full h-auto object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
         draggable="false"
+        loading="lazy"
+        format="webp"
       />
     </div>
 

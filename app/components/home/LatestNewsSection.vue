@@ -57,11 +57,13 @@ const formatDate = (date: any) => {
         >
           <!-- Image Area -->
           <div class="rounded-lg overflow-hidden mb-4 aspect-video">
-            <img
+            <NuxtImg
               :src="item.thumbnail"
               :alt="item.title"
               class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               draggable="false"
+              loading="lazy"
+              format="webp"
             />
           </div>
 

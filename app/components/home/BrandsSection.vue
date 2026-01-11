@@ -72,9 +72,11 @@ const brands = computed(() => {
           class="group relative rounded-2xl overflow-hidden aspect-[3/5] cursor-pointer"
         >
           <!-- Background Image -->
-          <img :src="brand.bg"
+          <NuxtImg :src="brand.bg"
                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-               draggable="false"/>
+               draggable="false"
+               loading="lazy"
+               format="webp"/>
 
           <!-- Dark Overlay -->
           <div
@@ -83,11 +85,13 @@ const brands = computed(() => {
 
           <!-- Logo -->
           <div class="absolute inset-0 flex items-center justify-center p-6">
-            <img
+            <NuxtImg
               :src="brand.logo"
               :alt="brand.name"
               class="w-3/4 h-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-transform duration-300 group-hover:scale-110"
               draggable="false"
+              loading="lazy"
+              format="webp"
             />
           </div>
         </div>
