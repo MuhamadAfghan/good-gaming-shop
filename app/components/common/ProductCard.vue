@@ -1,28 +1,30 @@
 <script setup lang="ts">
 defineProps<{
-  image: string
-  title: string
-  price: string
-  originalPrice: string
-}>()
+  image: string;
+  title: string;
+  price: string;
+  originalPrice: string;
+}>();
 </script>
 
 <template>
-  <div class="p-3 group cursor-pointer bg-white">
+  <div class="p-3 group cursor-pointer">
     <!-- Image Area -->
     <div
       class="relative bg-[#F9F9F9] border border-gray-200 rounded-lg mb-3 flex items-center justify-center aspect-square overflow-hidden"
     >
       <!-- Brand Logo Placeholder -->
       <div class="absolute top-4 left-0 w-full text-center z-10">
-        <span class="font-panton font-black italic text-xl text-black">NOIR</span>
+        <span class="font-panton font-black italic text-xl text-black"
+          >NOIR</span
+        >
       </div>
 
       <img
         :src="image"
         class="w-full h-auto object-contain mix-blend-multiply transition-transform duration-500 group-hover:scale-110"
         draggable="false"
-      >
+      />
     </div>
 
     <!-- Card Content -->

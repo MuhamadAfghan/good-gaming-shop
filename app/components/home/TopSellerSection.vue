@@ -1,17 +1,55 @@
 <script setup lang="ts">
-import noirImage from '~/assets/images/products/noir.png'
+import type { TopSeller } from "~/types/top-seller";
 
-const products = Array(8).fill({
-  image: noirImage,
-  title: 'Noir Timeless82 V2 Classic Edition - Gaming Keyboard',
-  price: 'RP 824.000',
-  originalPrice: 'RP 1.099.000'
-})
+const { topSellers, pending } = useTopSellers();
+const config = useRuntimeConfig();
+
+const products = computed(() => {
+  return topSellers.value.map((product) => {
+    const thumbnail = product.thumbnail?.path;
+    const image = thumbnail
+      ? thumbnail.startsWith("http")
+        ? thumbnail
+        : `${config.public.apiBaseUrl}${thumbnail}`
+      : "";
+
+    // Find the lowest price from all variations
+    let minPrice = Infinity;
+    let maxMarkupPrice = 0;
+
+    product.productVariations.forEach((variation) => {
+      variation.productColors.forEach((color) => {
+        if (color.realPrice < minPrice) minPrice = color.realPrice;
+        if (color.markupPrice > maxMarkupPrice) maxMarkupPrice = color.markupPrice;
+      });
+    });
+    
+    // If no variations/colors, defaults will show 0 or handle logic as needed
+    const finalPrice = minPrice === Infinity ? 0 : minPrice;
+
+    // Helper to format currency
+    const formatCurrency = (amount: number) => {
+      return new Intl.NumberFormat("id-ID", {
+        style: "currency",
+        currency: "IDR",
+        minimumFractionDigits: 0,
+      }).format(amount);
+    };
+
+    return {
+      image,
+      title: product.name,
+      price: formatCurrency(finalPrice),
+      originalPrice: maxMarkupPrice > 0 ? formatCurrency(maxMarkupPrice) : "",
+      // Passing colors to card if needed later, currently card just has placeholders
+    };
+  });
+});
 </script>
 
 <template>
-  <div class="w-full bg-white py-16 font-manrope">
-    <div class="px-12.5">
+  <div class="w-full bg-white font-manrope">
+    <div class="px-12.5 container mx-auto">
       <!-- Header -->
       <div class="flex flex-col md:flex-row justify-between items-end mb-10">
         <div>
@@ -34,8 +72,13 @@ const products = Array(8).fill({
         </button>
       </div>
 
+      <!-- Skeleton -->
+      <div v-if="pending" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <CommonSkeletonImage v-for="i in 4" :key="i" class="w-full aspect-[3/4] rounded-lg" />
+      </div>
+
       <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div v-if="!pending" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <CommonProductCard
           v-for="(item, index) in products"
           :key="index"

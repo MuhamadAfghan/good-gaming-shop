@@ -1,63 +1,26 @@
 <script setup lang="ts">
-import news1 from '~/assets/images/news/new-1.png'
-import news2 from '~/assets/images/news/new-2.png'
-import news3 from '~/assets/images/news/new-3.png'
-import news4 from '~/assets/images/news/new-4.png'
-import news5 from '~/assets/images/news/new-5.png'
-import news6 from '~/assets/images/news/new-6.png'
-import news7 from '~/assets/images/news/new-7.png'
-import news8 from '~/assets/images/news/new-8.png'
+import { stripHtml, truncateText } from "~/utils/string";
 
-const newsItems = [
-  {
-    image: news1,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
-  },
-  {
-    image: news2,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
-  },
-  {
-    image: news3,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
-  },
-  {
-    image: news4,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
-  },
-  {
-    image: news5,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
-  },
-  {
-    image: news6,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
-  },
-  {
-    image: news7,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
-  },
-  {
-    image: news8,
-    title: 'E-Commerce Pulse 2025: What’s Driving Growth?',
-    date: '25 March 2025'
+const { newsletters, pending } = useNewsletters();
+
+// Helper to format date (if available) assuming it might be an ISO string later or we just hide it if empty
+const formatDate = (date: any) => {
+  if (!date || typeof date === 'object' && Object.keys(date).length === 0) return ''; 
+  try {
+    return new Date(date).toLocaleDateString("en-GB", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  } catch (e) {
+    return '';
   }
-]
-
-const excerpt
-  = 'A concise look at emerging product categories, funnel trends, and digital behavior shaping the e-commerce space.'
+};
 </script>
 
 <template>
-  <div class="w-full bg-white py-16 font-manrope">
-    <div class="px-12.5">
+  <div class="w-full bg-white font-manrope">
+    <div class="px-12.5 container mx-auto">
       <!-- Header -->
       <div class="flex flex-col md:flex-row justify-between items-end mb-10">
         <div class="flex">
@@ -75,34 +38,45 @@ const excerpt
         </button>
       </div>
 
+      <!-- Skeleton -->
+      <div v-if="pending" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div v-for="n in 4" :key="n" class="flex flex-col gap-4">
+             <CommonSkeletonImage class="w-full h-48 rounded-lg" />
+             <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+             <div class="h-3 bg-gray-200 rounded w-full"></div>
+             <div class="h-3 bg-gray-200 rounded w-1/2"></div>
+        </div>
+      </div>
+
       <!-- Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div v-if="!pending" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         <div
-          v-for="(item, index) in newsItems"
+          v-for="(item, index) in newsletters"
           :key="index"
           class="group cursor-pointer"
         >
           <!-- Image Area -->
-          <div class="rounded-lg overflow-hidden mb-4">
+          <div class="rounded-lg overflow-hidden mb-4 aspect-video">
             <img
-              :src="item.image"
-              class="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-105"
+              :src="item.thumbnail"
+              :alt="item.title"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
               draggable="false"
-            >
+            />
           </div>
 
           <!-- Content -->
           <div>
             <h3
-              class="font-bold text-lg text-[#1A1A1A] leading-tight mb-2 group-hover:text-[#E21F32] transition-colors"
+              class="font-bold text-lg text-[#1A1A1A] leading-tight mb-2 group-hover:text-[#E21F32] transition-colors line-clamp-2"
             >
               {{ item.title }}
             </h3>
             <p class="text-sm text-gray-500 mb-2 line-clamp-3">
-              {{ excerpt }}
+              {{ truncateText(stripHtml(item.content), 120) }}
             </p>
             <span class="text-xs font-bold text-gray-400">
-              {{ item.date }}
+              {{ formatDate(item.publishedAt) }}
             </span>
           </div>
         </div>

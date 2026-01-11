@@ -4,7 +4,7 @@ import ggsLogo from "~/assets/images/logos/app-logo-2.svg";
 </script>
 
 <template>
-  <div class="px-12.5 overflow-hidden">
+  <div class="px-12.5 overflow-hidden container mx-auto">
     <div
       class="w-full bg-[#32080C] rounded-lg text-white relative overflow-hidden font-manrope"
     >

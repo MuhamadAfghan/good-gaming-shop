@@ -1,15 +1,21 @@
 <template>
-  <div class="space-y-10 pb-10">
+  <div class="space-y-23 pb-10">
     <HomeHeroSlider />
     <HomePromoSection />
-    <HomeGroupBuySection />
-    <HomeNewDropsSection />
+    <div class="flex flex-col">
+      <HomeGroupBuySection />
+      <HomeNewDropsSection />
+    </div>
     <HomeTopSellerSection />
     <HomeBrandsSection />
-    <HomeRecommendedSection />
-    <HomeTikTokSection />
+    <div class="flex flex-col">
+      <HomeRecommendedSection class="py-16" />
+      <HomeTikTokSection />
+    </div>
     <HomeLatestNewsSection />
-    <HomeWhyChooseSection />
-    <HomeCTASection />
+    <div class="flex gap-13 flex-col">
+      <HomeWhyChooseSection />
+      <HomeCTASection />
+    </div>
   </div>
 </template>

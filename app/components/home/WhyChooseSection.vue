@@ -1,46 +1,46 @@
 <script setup lang="ts">
-import lightningIcon from '~/assets/icons/lightning.svg'
-import fastForwardIcon from '~/assets/icons/fast-forward.svg'
-import medalIcon from '~/assets/icons/medal.svg'
-import coinIcon from '~/assets/icons/coin.svg'
-import shieldIcon from '~/assets/icons/shield.svg'
+import lightningIcon from "~/assets/icons/lightning.svg";
+import fastForwardIcon from "~/assets/icons/fast-forward.svg";
+import medalIcon from "~/assets/icons/medal.svg";
+import coinIcon from "~/assets/icons/coin.svg";
+import shieldIcon from "~/assets/icons/shield.svg";
 
 const features = [
   {
     icon: lightningIcon,
-    title: 'The Ultimate Gaming Gears',
+    title: "The Ultimate Gaming Gears",
     description:
-      'Complete your battlestation with top-tier gaming headsets, keyboards, mice, and chairs - all in one place.'
+      "Complete your battlestation with top-tier gaming headsets, keyboards, mice, and chairs - all in one place.",
   },
   {
     icon: fastForwardIcon,
-    title: 'Fast Delivery, No Waiting Game',
+    title: "Fast Delivery, No Waiting Game",
     description:
-      'COD, pickup, and 1-day shipping available to get your gear faster than ever.'
+      "COD, pickup, and 1-day shipping available to get your gear faster than ever.",
   },
   {
     icon: medalIcon,
-    title: 'Gamer-Approved Quality',
+    title: "Gamer-Approved Quality",
     description:
-      'Handpicked gaming essentials from trusted brands. Only the best for real players.'
+      "Handpicked gaming essentials from trusted brands. Only the best for real players.",
   },
   {
     icon: coinIcon,
-    title: 'Epic Deals for Every Gamer',
+    title: "Epic Deals for Every Gamer",
     description:
-      'Upgrade your setup without breaking the bank — premium gear at unbeatable prices.'
+      "Upgrade your setup without breaking the bank — premium gear at unbeatable prices.",
   },
   {
     icon: shieldIcon,
-    title: 'Direct from Source, No Middleman',
-    description: 'Best price guaranteed - no extra markup, just pure value.'
-  }
-]
+    title: "Direct from Source, No Middleman",
+    description: "Best price guaranteed - no extra markup, just pure value.",
+  },
+];
 </script>
 
 <template>
-  <div class="w-full bg-white py-16 font-manrope">
-    <div class="px-12.5">
+  <div class="w-full bg-white font-manrope">
+    <div class="px-12.5 container mx-auto">
       <!-- Header -->
       <div class="mb-10">
         <h2
@@ -74,7 +74,7 @@ const features = [
               :alt="feature.title"
               class="w-full h-full object-contain"
               draggable="false"
-            >
+            />
           </div>
 
           <!-- Content -->
