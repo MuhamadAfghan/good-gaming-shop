@@ -54,4 +54,8 @@ export default defineNuxtConfig({
       },
     ],
   },
+
+  image: {
+    domains: ['api.103-150-93-183.sslip.io']
+  }
 });

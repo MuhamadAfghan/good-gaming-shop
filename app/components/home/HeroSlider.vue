@@ -40,7 +40,7 @@ function select(index: number) {
           class="h-173.25 object-cover w-full"
           draggable="false"
           format="webp"
-          loading="eager"
+          placeholder 
         />
       </UCarousel>
     </ClientOnly>
